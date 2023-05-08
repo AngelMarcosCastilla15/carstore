@@ -43,5 +43,21 @@ BEGIN
 	SELECT * FROM automoviles WHERE idautomovil = _idautomovil;
 END $$
 
+DELIMITER $$
+CREATE PROCEDURE spu_editar_automovil(
+_marca VARCHAR(30),
+_modelo VARCHAR(30),
+_precio DECIMAL(9,2),
+_tipocombustible  VARCHAR(20),
+_color				VARCHAR(30),
+_idautomovil		INT
+)
+BEGIN	
+	UPDATE automoviles SET marca = _marca , modelo = _modelo, precio = _precio, tipocombustible = _tipocombustible, color = _color
+	WHERE idautomovil = _idautomovil;
+	
+END $$
 
+
+CALL spu_editar_automovil('Kia', "modelo editado", 3000, "Gasolina premiun", "negro", 36)
 CALL  spu_crear_automovil("Nisan", "Camry", 20000, 'GNV', "blanco");

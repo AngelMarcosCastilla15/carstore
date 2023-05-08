@@ -74,4 +74,22 @@ class Automovil extends Conexion
      return false;
     }
   }
+  
+ public function editarAutomovil($datos =[]){
+    try{
+      $consulta = $this->conexion->prepare("CALL spu_editar_automovil(?,?,?,?,?,?)");
+      return $consulta->execute(
+        array(
+          $datos["marca"],
+          $datos["modelo"],
+          $datos["precio"],
+          $datos["tipocombustible"],
+          $datos["color"],
+          $datos["idautomovil"]
+        )
+      );
+    }catch(xception $e){
+      return false;
+    }
+  }  
 }

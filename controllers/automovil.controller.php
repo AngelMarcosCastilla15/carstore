@@ -37,4 +37,20 @@ if (isset($_POST['operacion'])){
       $datos = $automovil->busarAuto($_POST["idautomovil"]);
       echo json_encode($datos);
     }
+
+    if ($_POST['operacion'] == 'editar'){
+      //Capturar los datos
+      $datosGuardar = [
+        "marca" => $_POST["marca"],
+        "modelo" => $_POST["modelo"],
+        "precio" => $_POST["precio"],
+        "tipocombustible" => $_POST["tipocombustible"],
+        "color" => $_POST["color"],
+        "idautomovil" => $_POST["idautomovil"]
+      ];
+  
+      $seRegistro = $automovil->editarAutomovil($datosGuardar);
+      echo json_encode(["status" => $seRegistro]);
+    } 
+  
 }
